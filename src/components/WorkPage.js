@@ -45,10 +45,16 @@ const WorkPage = () => {
   const yinyang = useRef(null);
   useEffect(() => {
     let element = ref.current;
+    let yinyangScroll = yinyang.current;
     const rotate = () => {
-      element.style.transform = `translateX(${-window.pageYOffset}px)`;
-      return (yinyang.current.style.transform =
-        `rotate(` + -window.pageYOffset + `deg)`);
+      console.log(element);
+      if (element.style) {
+        element.style.transform = `translateX(${-window.pageYOffset}px)`;
+        return (yinyangScroll.style.transform =
+          `rotate(` + -window.pageYOffset + `deg)`);
+      } else {
+        return null;
+      }
     };
     window.addEventListener("scroll", rotate);
 
